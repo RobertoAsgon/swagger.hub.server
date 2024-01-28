@@ -1,0 +1,1389 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "myLIMS API",
+    "version" : "v1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/Labsoft-Org/Labsoft.MyLims.API/v1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  } ],
+  "security" : [ {
+    "Bearer" : [ ]
+  } ],
+  "paths" : {
+    "/api/v1/BillingMeasurements" : {
+      "get" : {
+        "tags" : [ "BillingMeasurements" ],
+        "operationId" : "Get Billing Measurements",
+        "parameters" : [ {
+          "name" : "workId",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BillingMeasurementDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Account" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "RegistryNumber" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "EquivalencyId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "AddressTypeId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "AddressType" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "Address1" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "Address2" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "District" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "CityId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "City" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "StateId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "State" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "CountryId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "Country" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "ZipCode" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "CountryId" : 1,
+          "ZipCode" : "ZipCode",
+          "Address2" : "Address2",
+          "StateId" : 1,
+          "Identification" : "Identification",
+          "Address1" : "Address1",
+          "City" : "City",
+          "EquivalencyId" : 2,
+          "AddressTypeId" : 4,
+          "CityId" : 7,
+          "State" : "State",
+          "Country" : "Country",
+          "Id" : 3,
+          "AddressType" : "AddressType",
+          "District" : "District",
+          "RegistryNumber" : "RegistryNumber"
+        }
+      },
+      "Analysis" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "Identification" : "Identification",
+          "Id" : 4
+        }
+      },
+      "AnalysisGroup" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "Identification" : "Identification",
+          "Id" : 3
+        }
+      },
+      "BaseAccount" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "RegistryNumber" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "EquivalencyId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "Identification" : "Identification",
+          "Id" : 3,
+          "RegistryNumber" : "RegistryNumber",
+          "EquivalencyId" : 6
+        }
+      },
+      "BillingMeasurementDto" : {
+        "type" : "object",
+        "properties" : {
+          "Work" : {
+            "$ref" : "#/components/schemas/Work"
+          },
+          "WorkInfos" : {
+            "type" : "array",
+            "nullable" : true,
+            "readOnly" : true,
+            "items" : {
+              "$ref" : "#/components/schemas/WorkInfo"
+            }
+          },
+          "WorkPriceItems" : {
+            "type" : "array",
+            "nullable" : true,
+            "readOnly" : true,
+            "items" : {
+              "$ref" : "#/components/schemas/WorkPriceItem"
+            }
+          },
+          "WorkWorks" : {
+            "type" : "array",
+            "nullable" : true,
+            "readOnly" : true,
+            "items" : {
+              "$ref" : "#/components/schemas/WorkWork"
+            }
+          },
+          "WorkSamples" : {
+            "type" : "array",
+            "nullable" : true,
+            "readOnly" : true,
+            "items" : {
+              "$ref" : "#/components/schemas/Sample"
+            }
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "Work" : {
+            "Account" : {
+              "CountryId" : 1,
+              "ZipCode" : "ZipCode",
+              "Address2" : "Address2",
+              "StateId" : 1,
+              "Identification" : "Identification",
+              "Address1" : "Address1",
+              "City" : "City",
+              "EquivalencyId" : 2,
+              "AddressTypeId" : 4,
+              "CityId" : 7,
+              "State" : "State",
+              "Country" : "Country",
+              "Id" : 3,
+              "AddressType" : "AddressType",
+              "District" : "District",
+              "RegistryNumber" : "RegistryNumber"
+            },
+            "WorkClass" : {
+              "Identification" : "Identification",
+              "Id" : 2
+            },
+            "CommercialProposalId" : 6,
+            "Identification" : "Identification",
+            "CommercialProposalControlNumber" : "CommercialProposalControlNumber",
+            "WorkConclusion" : {
+              "Identification" : "Identification",
+              "Id" : 5
+            },
+            "TotalPrice" : 9.301444,
+            "Currency" : {
+              "CurrencyCode" : "CurrencyCode",
+              "Identification" : "Identification",
+              "Id" : 1
+            },
+            "CommercialProposalIdentification" : "CommercialProposalIdentification",
+            "Id" : 0,
+            "WorkSubclass" : {
+              "Identification" : "Identification",
+              "Id" : 7
+            },
+            "RelatedAccount" : {
+              "Email" : "Email",
+              "Phone" : "Phone",
+              "Identification" : "Identification",
+              "Id" : 6,
+              "RegistryNumber" : "RegistryNumber",
+              "EquivalencyId" : 1
+            },
+            "ServiceCenter" : {
+              "Identification" : "Identification",
+              "Id" : 5
+            },
+            "ControlNumber" : "ControlNumber"
+          },
+          "WorkInfos" : [ {
+            "DisplayValue" : "DisplayValue",
+            "InfoId" : 7,
+            "MeasurementUnitIdentification" : "MeasurementUnitIdentification",
+            "Identification" : "Identification",
+            "NumericValue" : 1.1730742,
+            "MeasurementUnitId" : 4,
+            "EquivalencyId" : 5
+          }, {
+            "DisplayValue" : "DisplayValue",
+            "InfoId" : 7,
+            "MeasurementUnitIdentification" : "MeasurementUnitIdentification",
+            "Identification" : "Identification",
+            "NumericValue" : 1.1730742,
+            "MeasurementUnitId" : 4,
+            "EquivalencyId" : 5
+          } ],
+          "WorkWorks" : [ {
+            "Account" : {
+              "Identification" : "Identification",
+              "Id" : 3,
+              "RegistryNumber" : "RegistryNumber",
+              "EquivalencyId" : 6
+            },
+            "WorkClass" : null,
+            "WorkType" : {
+              "Identification" : "Identification",
+              "Id" : 1
+            },
+            "Identification" : "Identification",
+            "WorkInfos" : [ null, null ],
+            "WorkPriceItems" : [ null, null ],
+            "WorkConclusion" : null,
+            "TotalPrice" : 6.4384236,
+            "Id" : 9,
+            "WorkSubclass" : null,
+            "RelatedAccount" : null,
+            "ServiceCenter" : null,
+            "ControlNumber" : "ControlNumber"
+          }, {
+            "Account" : {
+              "Identification" : "Identification",
+              "Id" : 3,
+              "RegistryNumber" : "RegistryNumber",
+              "EquivalencyId" : 6
+            },
+            "WorkClass" : null,
+            "WorkType" : {
+              "Identification" : "Identification",
+              "Id" : 1
+            },
+            "Identification" : "Identification",
+            "WorkInfos" : [ null, null ],
+            "WorkPriceItems" : [ null, null ],
+            "WorkConclusion" : null,
+            "TotalPrice" : 6.4384236,
+            "Id" : 9,
+            "WorkSubclass" : null,
+            "RelatedAccount" : null,
+            "ServiceCenter" : null,
+            "ControlNumber" : "ControlNumber"
+          } ],
+          "WorkPriceItems" : [ {
+            "Active" : true,
+            "Description" : "Description",
+            "Price" : 9.36931,
+            "Amount" : 6.6835623,
+            "TotalPrice" : 8.762042,
+            "Bill" : true,
+            "Identification" : "Identification",
+            "PriceItemId" : 9,
+            "Billed" : true
+          }, {
+            "Active" : true,
+            "Description" : "Description",
+            "Price" : 9.36931,
+            "Amount" : 6.6835623,
+            "TotalPrice" : 8.762042,
+            "Bill" : true,
+            "Identification" : "Identification",
+            "PriceItemId" : 9,
+            "Billed" : true
+          } ],
+          "WorkSamples" : [ {
+            "CollectionPoint" : {
+              "Identification" : "Identification",
+              "Id" : 5
+            },
+            "SamplePriceItems" : [ {
+              "ServiceArea" : {
+                "Identification" : "Identification",
+                "Id" : 7
+              },
+              "Active" : true,
+              "Description" : "Description",
+              "AnalysisGroup" : {
+                "Identification" : "Identification",
+                "Id" : 3
+              },
+              "Analysis" : {
+                "Identification" : "Identification",
+                "Id" : 4
+              },
+              "TotalPrice" : 3.05761,
+              "Bill" : true,
+              "Identification" : "Identification",
+              "Method" : {
+                "Identification" : "Identification",
+                "MasterId" : 8
+              },
+              "PriceItemId" : 0,
+              "Billed" : true
+            }, {
+              "ServiceArea" : {
+                "Identification" : "Identification",
+                "Id" : 7
+              },
+              "Active" : true,
+              "Description" : "Description",
+              "AnalysisGroup" : {
+                "Identification" : "Identification",
+                "Id" : 3
+              },
+              "Analysis" : {
+                "Identification" : "Identification",
+                "Id" : 4
+              },
+              "TotalPrice" : 3.05761,
+              "Bill" : true,
+              "Identification" : "Identification",
+              "Method" : {
+                "Identification" : "Identification",
+                "MasterId" : 8
+              },
+              "PriceItemId" : 0,
+              "Billed" : true
+            } ],
+            "Account" : null,
+            "SampleInfos" : [ {
+              "DisplayValue" : "DisplayValue",
+              "InfoId" : 7,
+              "MeasurementUnitIdentification" : "MeasurementUnitIdentification",
+              "Identification" : "Identification",
+              "NumericValue" : 0.8851375,
+              "MeasurementUnitId" : 7,
+              "EquivalencyId" : 6
+            }, {
+              "DisplayValue" : "DisplayValue",
+              "InfoId" : 7,
+              "MeasurementUnitIdentification" : "MeasurementUnitIdentification",
+              "Identification" : "Identification",
+              "NumericValue" : 0.8851375,
+              "MeasurementUnitId" : 7,
+              "EquivalencyId" : 6
+            } ],
+            "Identification" : "Identification",
+            "Latitude" : 6.704019,
+            "Longitude" : 3.3531933,
+            "SampleConclusion" : {
+              "Identification" : "Identification",
+              "Id" : 3
+            },
+            "ControlIdentification" : "ControlIdentification",
+            "TotalPrice" : 7.0483656,
+            "Id" : 2,
+            "RelatedAccount" : null,
+            "ServiceCenter" : null,
+            "ControlNumber" : "ControlNumber",
+            "SampleType" : {
+              "Identification" : "Identification",
+              "Id" : 6,
+              "EquivalencyId" : 6
+            }
+          }, {
+            "CollectionPoint" : {
+              "Identification" : "Identification",
+              "Id" : 5
+            },
+            "SamplePriceItems" : [ {
+              "ServiceArea" : {
+                "Identification" : "Identification",
+                "Id" : 7
+              },
+              "Active" : true,
+              "Description" : "Description",
+              "AnalysisGroup" : {
+                "Identification" : "Identification",
+                "Id" : 3
+              },
+              "Analysis" : {
+                "Identification" : "Identification",
+                "Id" : 4
+              },
+              "TotalPrice" : 3.05761,
+              "Bill" : true,
+              "Identification" : "Identification",
+              "Method" : {
+                "Identification" : "Identification",
+                "MasterId" : 8
+              },
+              "PriceItemId" : 0,
+              "Billed" : true
+            }, {
+              "ServiceArea" : {
+                "Identification" : "Identification",
+                "Id" : 7
+              },
+              "Active" : true,
+              "Description" : "Description",
+              "AnalysisGroup" : {
+                "Identification" : "Identification",
+                "Id" : 3
+              },
+              "Analysis" : {
+                "Identification" : "Identification",
+                "Id" : 4
+              },
+              "TotalPrice" : 3.05761,
+              "Bill" : true,
+              "Identification" : "Identification",
+              "Method" : {
+                "Identification" : "Identification",
+                "MasterId" : 8
+              },
+              "PriceItemId" : 0,
+              "Billed" : true
+            } ],
+            "Account" : null,
+            "SampleInfos" : [ {
+              "DisplayValue" : "DisplayValue",
+              "InfoId" : 7,
+              "MeasurementUnitIdentification" : "MeasurementUnitIdentification",
+              "Identification" : "Identification",
+              "NumericValue" : 0.8851375,
+              "MeasurementUnitId" : 7,
+              "EquivalencyId" : 6
+            }, {
+              "DisplayValue" : "DisplayValue",
+              "InfoId" : 7,
+              "MeasurementUnitIdentification" : "MeasurementUnitIdentification",
+              "Identification" : "Identification",
+              "NumericValue" : 0.8851375,
+              "MeasurementUnitId" : 7,
+              "EquivalencyId" : 6
+            } ],
+            "Identification" : "Identification",
+            "Latitude" : 6.704019,
+            "Longitude" : 3.3531933,
+            "SampleConclusion" : {
+              "Identification" : "Identification",
+              "Id" : 3
+            },
+            "ControlIdentification" : "ControlIdentification",
+            "TotalPrice" : 7.0483656,
+            "Id" : 2,
+            "RelatedAccount" : null,
+            "ServiceCenter" : null,
+            "ControlNumber" : "ControlNumber",
+            "SampleType" : {
+              "Identification" : "Identification",
+              "Id" : 6,
+              "EquivalencyId" : 6
+            }
+          } ]
+        }
+      },
+      "CollectionPoint" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "Identification" : "Identification",
+          "Id" : 5
+        }
+      },
+      "Currency" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "CurrencyCode" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "CurrencyCode" : "CurrencyCode",
+          "Identification" : "Identification",
+          "Id" : 1
+        }
+      },
+      "Method" : {
+        "type" : "object",
+        "properties" : {
+          "MasterId" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "Identification" : "Identification",
+          "MasterId" : 8
+        }
+      },
+      "RelatedAccount" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "RegistryNumber" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "EquivalencyId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "Phone" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "Email" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "Email" : "Email",
+          "Phone" : "Phone",
+          "Identification" : "Identification",
+          "Id" : 6,
+          "RegistryNumber" : "RegistryNumber",
+          "EquivalencyId" : 1
+        }
+      },
+      "Sample" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "ControlNumber" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "ControlIdentification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "Account" : {
+            "$ref" : "#/components/schemas/BaseAccount"
+          },
+          "RelatedAccount" : {
+            "$ref" : "#/components/schemas/RelatedAccount"
+          },
+          "SampleType" : {
+            "$ref" : "#/components/schemas/SampleType"
+          },
+          "CollectionPoint" : {
+            "$ref" : "#/components/schemas/CollectionPoint"
+          },
+          "Latitude" : {
+            "type" : "number",
+            "format" : "float",
+            "nullable" : true
+          },
+          "Longitude" : {
+            "type" : "number",
+            "format" : "float",
+            "nullable" : true
+          },
+          "ServiceCenter" : {
+            "$ref" : "#/components/schemas/ServiceCenter"
+          },
+          "SampleConclusion" : {
+            "$ref" : "#/components/schemas/SampleConclusion"
+          },
+          "SampleInfos" : {
+            "type" : "array",
+            "nullable" : true,
+            "items" : {
+              "$ref" : "#/components/schemas/SampleInfo"
+            }
+          },
+          "SamplePriceItems" : {
+            "type" : "array",
+            "nullable" : true,
+            "items" : {
+              "$ref" : "#/components/schemas/SamplePriceItem"
+            }
+          },
+          "TotalPrice" : {
+            "type" : "number",
+            "format" : "float"
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "CollectionPoint" : {
+            "Identification" : "Identification",
+            "Id" : 5
+          },
+          "SamplePriceItems" : [ {
+            "ServiceArea" : {
+              "Identification" : "Identification",
+              "Id" : 7
+            },
+            "Active" : true,
+            "Description" : "Description",
+            "AnalysisGroup" : {
+              "Identification" : "Identification",
+              "Id" : 3
+            },
+            "Analysis" : {
+              "Identification" : "Identification",
+              "Id" : 4
+            },
+            "TotalPrice" : 3.05761,
+            "Bill" : true,
+            "Identification" : "Identification",
+            "Method" : {
+              "Identification" : "Identification",
+              "MasterId" : 8
+            },
+            "PriceItemId" : 0,
+            "Billed" : true
+          }, {
+            "ServiceArea" : {
+              "Identification" : "Identification",
+              "Id" : 7
+            },
+            "Active" : true,
+            "Description" : "Description",
+            "AnalysisGroup" : {
+              "Identification" : "Identification",
+              "Id" : 3
+            },
+            "Analysis" : {
+              "Identification" : "Identification",
+              "Id" : 4
+            },
+            "TotalPrice" : 3.05761,
+            "Bill" : true,
+            "Identification" : "Identification",
+            "Method" : {
+              "Identification" : "Identification",
+              "MasterId" : 8
+            },
+            "PriceItemId" : 0,
+            "Billed" : true
+          } ],
+          "Account" : null,
+          "SampleInfos" : [ {
+            "DisplayValue" : "DisplayValue",
+            "InfoId" : 7,
+            "MeasurementUnitIdentification" : "MeasurementUnitIdentification",
+            "Identification" : "Identification",
+            "NumericValue" : 0.8851375,
+            "MeasurementUnitId" : 7,
+            "EquivalencyId" : 6
+          }, {
+            "DisplayValue" : "DisplayValue",
+            "InfoId" : 7,
+            "MeasurementUnitIdentification" : "MeasurementUnitIdentification",
+            "Identification" : "Identification",
+            "NumericValue" : 0.8851375,
+            "MeasurementUnitId" : 7,
+            "EquivalencyId" : 6
+          } ],
+          "Identification" : "Identification",
+          "Latitude" : 6.704019,
+          "Longitude" : 3.3531933,
+          "SampleConclusion" : {
+            "Identification" : "Identification",
+            "Id" : 3
+          },
+          "ControlIdentification" : "ControlIdentification",
+          "TotalPrice" : 7.0483656,
+          "Id" : 2,
+          "RelatedAccount" : null,
+          "ServiceCenter" : null,
+          "ControlNumber" : "ControlNumber",
+          "SampleType" : {
+            "Identification" : "Identification",
+            "Id" : 6,
+            "EquivalencyId" : 6
+          }
+        }
+      },
+      "SampleConclusion" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "Identification" : "Identification",
+          "Id" : 3
+        }
+      },
+      "SampleInfo" : {
+        "type" : "object",
+        "properties" : {
+          "InfoId" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "DisplayValue" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "NumericValue" : {
+            "type" : "number",
+            "format" : "float",
+            "nullable" : true
+          },
+          "MeasurementUnitId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "MeasurementUnitIdentification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "EquivalencyId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "DisplayValue" : "DisplayValue",
+          "InfoId" : 7,
+          "MeasurementUnitIdentification" : "MeasurementUnitIdentification",
+          "Identification" : "Identification",
+          "NumericValue" : 0.8851375,
+          "MeasurementUnitId" : 7,
+          "EquivalencyId" : 6
+        }
+      },
+      "SamplePriceItem" : {
+        "type" : "object",
+        "properties" : {
+          "PriceItemId" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "Analysis" : {
+            "$ref" : "#/components/schemas/Analysis"
+          },
+          "Method" : {
+            "$ref" : "#/components/schemas/Method"
+          },
+          "ServiceArea" : {
+            "$ref" : "#/components/schemas/ServiceArea"
+          },
+          "AnalysisGroup" : {
+            "$ref" : "#/components/schemas/AnalysisGroup"
+          },
+          "TotalPrice" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "Description" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "Active" : {
+            "type" : "boolean",
+            "nullable" : true
+          },
+          "Bill" : {
+            "type" : "boolean",
+            "nullable" : true
+          },
+          "Billed" : {
+            "type" : "boolean",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "ServiceArea" : {
+            "Identification" : "Identification",
+            "Id" : 7
+          },
+          "Active" : true,
+          "Description" : "Description",
+          "AnalysisGroup" : {
+            "Identification" : "Identification",
+            "Id" : 3
+          },
+          "Analysis" : {
+            "Identification" : "Identification",
+            "Id" : 4
+          },
+          "TotalPrice" : 3.05761,
+          "Bill" : true,
+          "Identification" : "Identification",
+          "Method" : {
+            "Identification" : "Identification",
+            "MasterId" : 8
+          },
+          "PriceItemId" : 0,
+          "Billed" : true
+        }
+      },
+      "SampleType" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "EquivalencyId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "Identification" : "Identification",
+          "Id" : 6,
+          "EquivalencyId" : 6
+        }
+      },
+      "ServiceArea" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "Identification" : "Identification",
+          "Id" : 7
+        }
+      },
+      "ServiceCenter" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "Identification" : "Identification",
+          "Id" : 5
+        }
+      },
+      "Work" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "ControlNumber" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "RelatedAccount" : {
+            "$ref" : "#/components/schemas/RelatedAccount"
+          },
+          "ServiceCenter" : {
+            "$ref" : "#/components/schemas/ServiceCenter"
+          },
+          "WorkConclusion" : {
+            "$ref" : "#/components/schemas/WorkConclusion"
+          },
+          "WorkClass" : {
+            "$ref" : "#/components/schemas/WorkClass"
+          },
+          "WorkSubclass" : {
+            "$ref" : "#/components/schemas/WorkSubclass"
+          },
+          "TotalPrice" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "Account" : {
+            "$ref" : "#/components/schemas/Account"
+          },
+          "Currency" : {
+            "$ref" : "#/components/schemas/Currency"
+          },
+          "CommercialProposalId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "CommercialProposalControlNumber" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "CommercialProposalIdentification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "Account" : {
+            "CountryId" : 1,
+            "ZipCode" : "ZipCode",
+            "Address2" : "Address2",
+            "StateId" : 1,
+            "Identification" : "Identification",
+            "Address1" : "Address1",
+            "City" : "City",
+            "EquivalencyId" : 2,
+            "AddressTypeId" : 4,
+            "CityId" : 7,
+            "State" : "State",
+            "Country" : "Country",
+            "Id" : 3,
+            "AddressType" : "AddressType",
+            "District" : "District",
+            "RegistryNumber" : "RegistryNumber"
+          },
+          "WorkClass" : {
+            "Identification" : "Identification",
+            "Id" : 2
+          },
+          "CommercialProposalId" : 6,
+          "Identification" : "Identification",
+          "CommercialProposalControlNumber" : "CommercialProposalControlNumber",
+          "WorkConclusion" : {
+            "Identification" : "Identification",
+            "Id" : 5
+          },
+          "TotalPrice" : 9.301444,
+          "Currency" : {
+            "CurrencyCode" : "CurrencyCode",
+            "Identification" : "Identification",
+            "Id" : 1
+          },
+          "CommercialProposalIdentification" : "CommercialProposalIdentification",
+          "Id" : 0,
+          "WorkSubclass" : {
+            "Identification" : "Identification",
+            "Id" : 7
+          },
+          "RelatedAccount" : {
+            "Email" : "Email",
+            "Phone" : "Phone",
+            "Identification" : "Identification",
+            "Id" : 6,
+            "RegistryNumber" : "RegistryNumber",
+            "EquivalencyId" : 1
+          },
+          "ServiceCenter" : {
+            "Identification" : "Identification",
+            "Id" : 5
+          },
+          "ControlNumber" : "ControlNumber"
+        }
+      },
+      "WorkClass" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "Identification" : "Identification",
+          "Id" : 2
+        }
+      },
+      "WorkConclusion" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "Identification" : "Identification",
+          "Id" : 5
+        }
+      },
+      "WorkInfo" : {
+        "type" : "object",
+        "properties" : {
+          "InfoId" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "DisplayValue" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "NumericValue" : {
+            "type" : "number",
+            "format" : "float",
+            "nullable" : true
+          },
+          "MeasurementUnitId" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "MeasurementUnitIdentification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "EquivalencyId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "DisplayValue" : "DisplayValue",
+          "InfoId" : 7,
+          "MeasurementUnitIdentification" : "MeasurementUnitIdentification",
+          "Identification" : "Identification",
+          "NumericValue" : 1.1730742,
+          "MeasurementUnitId" : 4,
+          "EquivalencyId" : 5
+        }
+      },
+      "WorkPriceItem" : {
+        "type" : "object",
+        "properties" : {
+          "PriceItemId" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "Price" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "Amount" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "TotalPrice" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "Description" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "Active" : {
+            "type" : "boolean"
+          },
+          "Bill" : {
+            "type" : "boolean"
+          },
+          "Billed" : {
+            "type" : "boolean"
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "Active" : true,
+          "Description" : "Description",
+          "Price" : 9.36931,
+          "Amount" : 6.6835623,
+          "TotalPrice" : 8.762042,
+          "Bill" : true,
+          "Identification" : "Identification",
+          "PriceItemId" : 9,
+          "Billed" : true
+        }
+      },
+      "WorkSubclass" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "Identification" : "Identification",
+          "Id" : 7
+        }
+      },
+      "WorkType" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "Identification" : "Identification",
+          "Id" : 1
+        }
+      },
+      "WorkWork" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "ControlNumber" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "RelatedAccount" : {
+            "$ref" : "#/components/schemas/RelatedAccount"
+          },
+          "ServiceCenter" : {
+            "$ref" : "#/components/schemas/ServiceCenter"
+          },
+          "WorkConclusion" : {
+            "$ref" : "#/components/schemas/WorkConclusion"
+          },
+          "WorkClass" : {
+            "$ref" : "#/components/schemas/WorkClass"
+          },
+          "WorkSubclass" : {
+            "$ref" : "#/components/schemas/WorkSubclass"
+          },
+          "TotalPrice" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "Account" : {
+            "$ref" : "#/components/schemas/BaseAccount"
+          },
+          "WorkType" : {
+            "$ref" : "#/components/schemas/WorkType"
+          },
+          "WorkInfos" : {
+            "type" : "array",
+            "nullable" : true,
+            "items" : {
+              "$ref" : "#/components/schemas/WorkInfo"
+            }
+          },
+          "WorkPriceItems" : {
+            "type" : "array",
+            "nullable" : true,
+            "items" : {
+              "$ref" : "#/components/schemas/WorkPriceItem"
+            }
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "Account" : {
+            "Identification" : "Identification",
+            "Id" : 3,
+            "RegistryNumber" : "RegistryNumber",
+            "EquivalencyId" : 6
+          },
+          "WorkClass" : null,
+          "WorkType" : {
+            "Identification" : "Identification",
+            "Id" : 1
+          },
+          "Identification" : "Identification",
+          "WorkInfos" : [ null, null ],
+          "WorkPriceItems" : [ null, null ],
+          "WorkConclusion" : null,
+          "TotalPrice" : 6.4384236,
+          "Id" : 9,
+          "WorkSubclass" : null,
+          "RelatedAccount" : null,
+          "ServiceCenter" : null,
+          "ControlNumber" : "ControlNumber"
+        }
+      }
+    },
+    "securitySchemes" : {
+      "Bearer" : {
+        "type" : "apiKey",
+        "description" : "JWT Authorization header using the Bearer scheme.\r\n\r\nEnter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: 'Bearer 12345abcdef'",
+        "name" : "Authorization",
+        "in" : "header"
+      }
+    }
+  }
+}
