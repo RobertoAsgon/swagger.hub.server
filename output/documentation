@@ -1,0 +1,757 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "myLIMS API",
+    "version" : "v1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/Labsoft-Org/Labsoft.MyLims.API/v1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  } ],
+  "security" : [ {
+    "Bearer" : [ ]
+  } ],
+  "paths" : {
+    "/api/v1/BillingMeasurements" : {
+      "get" : {
+        "tags" : [ "BillingMeasurements" ],
+        "operationId" : "Get Billing Measurements",
+        "parameters" : [ {
+          "name" : "workId",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BillingMeasurementDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Account" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "RegistryNumber" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "EquivalencyId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "AddressTypeId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "AddressType" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "Address1" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "Address2" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "District" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "CityId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "City" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "StateId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "State" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "CountryId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "Country" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "ZipCode" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "Analysis" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "AnalysisGroup" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "BaseAccount" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "RegistryNumber" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "EquivalencyId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "BillingMeasurementDto" : {
+        "type" : "object",
+        "properties" : {
+          "Work" : {
+            "$ref" : "#/components/schemas/Work"
+          },
+          "WorkInfos" : {
+            "type" : "array",
+            "nullable" : true,
+            "readOnly" : true,
+            "items" : {
+              "$ref" : "#/components/schemas/WorkInfo"
+            }
+          },
+          "WorkPriceItems" : {
+            "type" : "array",
+            "nullable" : true,
+            "readOnly" : true,
+            "items" : {
+              "$ref" : "#/components/schemas/WorkPriceItem"
+            }
+          },
+          "WorkWorks" : {
+            "type" : "array",
+            "nullable" : true,
+            "readOnly" : true,
+            "items" : {
+              "$ref" : "#/components/schemas/WorkWork"
+            }
+          },
+          "WorkSamples" : {
+            "type" : "array",
+            "nullable" : true,
+            "readOnly" : true,
+            "items" : {
+              "$ref" : "#/components/schemas/Sample"
+            }
+          }
+        },
+        "additionalProperties" : false
+      },
+      "CollectionPoint" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "Currency" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "CurrencyCode" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "Method" : {
+        "type" : "object",
+        "properties" : {
+          "MasterId" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "RelatedAccount" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "RegistryNumber" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "EquivalencyId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "Phone" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "Email" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "Sample" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "ControlNumber" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "ControlIdentification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "Account" : {
+            "$ref" : "#/components/schemas/BaseAccount"
+          },
+          "RelatedAccount" : {
+            "$ref" : "#/components/schemas/RelatedAccount"
+          },
+          "SampleType" : {
+            "$ref" : "#/components/schemas/SampleType"
+          },
+          "CollectionPoint" : {
+            "$ref" : "#/components/schemas/CollectionPoint"
+          },
+          "Latitude" : {
+            "type" : "number",
+            "format" : "float",
+            "nullable" : true
+          },
+          "Longitude" : {
+            "type" : "number",
+            "format" : "float",
+            "nullable" : true
+          },
+          "ServiceCenter" : {
+            "$ref" : "#/components/schemas/ServiceCenter"
+          },
+          "SampleConclusion" : {
+            "$ref" : "#/components/schemas/SampleConclusion"
+          },
+          "SampleInfos" : {
+            "type" : "array",
+            "nullable" : true,
+            "items" : {
+              "$ref" : "#/components/schemas/SampleInfo"
+            }
+          },
+          "SamplePriceItems" : {
+            "type" : "array",
+            "nullable" : true,
+            "items" : {
+              "$ref" : "#/components/schemas/SamplePriceItem"
+            }
+          },
+          "TotalPrice" : {
+            "type" : "number",
+            "format" : "float"
+          }
+        },
+        "additionalProperties" : false
+      },
+      "SampleConclusion" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "SampleInfo" : {
+        "type" : "object",
+        "properties" : {
+          "InfoId" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "DisplayValue" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "NumericValue" : {
+            "type" : "number",
+            "format" : "float",
+            "nullable" : true
+          },
+          "MeasurementUnitId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "MeasurementUnitIdentification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "EquivalencyId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "SamplePriceItem" : {
+        "type" : "object",
+        "properties" : {
+          "PriceItemId" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "Analysis" : {
+            "$ref" : "#/components/schemas/Analysis"
+          },
+          "Method" : {
+            "$ref" : "#/components/schemas/Method"
+          },
+          "ServiceArea" : {
+            "$ref" : "#/components/schemas/ServiceArea"
+          },
+          "AnalysisGroup" : {
+            "$ref" : "#/components/schemas/AnalysisGroup"
+          },
+          "TotalPrice" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "Description" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "Active" : {
+            "type" : "boolean",
+            "nullable" : true
+          },
+          "Bill" : {
+            "type" : "boolean",
+            "nullable" : true
+          },
+          "Billed" : {
+            "type" : "boolean",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "SampleType" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "EquivalencyId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "ServiceArea" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "ServiceCenter" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "Work" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "ControlNumber" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "RelatedAccount" : {
+            "$ref" : "#/components/schemas/RelatedAccount"
+          },
+          "ServiceCenter" : {
+            "$ref" : "#/components/schemas/ServiceCenter"
+          },
+          "WorkConclusion" : {
+            "$ref" : "#/components/schemas/WorkConclusion"
+          },
+          "WorkClass" : {
+            "$ref" : "#/components/schemas/WorkClass"
+          },
+          "WorkSubclass" : {
+            "$ref" : "#/components/schemas/WorkSubclass"
+          },
+          "TotalPrice" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "Account" : {
+            "$ref" : "#/components/schemas/Account"
+          },
+          "Currency" : {
+            "$ref" : "#/components/schemas/Currency"
+          },
+          "CommercialProposalId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "CommercialProposalControlNumber" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "CommercialProposalIdentification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "WorkClass" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "WorkConclusion" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "WorkInfo" : {
+        "type" : "object",
+        "properties" : {
+          "InfoId" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "DisplayValue" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "NumericValue" : {
+            "type" : "number",
+            "format" : "float",
+            "nullable" : true
+          },
+          "MeasurementUnitId" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "MeasurementUnitIdentification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "EquivalencyId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "WorkPriceItem" : {
+        "type" : "object",
+        "properties" : {
+          "PriceItemId" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "Price" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "Amount" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "TotalPrice" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "Description" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "Active" : {
+            "type" : "boolean"
+          },
+          "Bill" : {
+            "type" : "boolean"
+          },
+          "Billed" : {
+            "type" : "boolean"
+          }
+        },
+        "additionalProperties" : false
+      },
+      "WorkSubclass" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "WorkType" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "WorkWork" : {
+        "type" : "object",
+        "properties" : {
+          "Id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "Identification" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "ControlNumber" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "RelatedAccount" : {
+            "$ref" : "#/components/schemas/RelatedAccount"
+          },
+          "ServiceCenter" : {
+            "$ref" : "#/components/schemas/ServiceCenter"
+          },
+          "WorkConclusion" : {
+            "$ref" : "#/components/schemas/WorkConclusion"
+          },
+          "WorkClass" : {
+            "$ref" : "#/components/schemas/WorkClass"
+          },
+          "WorkSubclass" : {
+            "$ref" : "#/components/schemas/WorkSubclass"
+          },
+          "TotalPrice" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "Account" : {
+            "$ref" : "#/components/schemas/BaseAccount"
+          },
+          "WorkType" : {
+            "$ref" : "#/components/schemas/WorkType"
+          },
+          "WorkInfos" : {
+            "type" : "array",
+            "nullable" : true,
+            "items" : {
+              "$ref" : "#/components/schemas/WorkInfo"
+            }
+          },
+          "WorkPriceItems" : {
+            "type" : "array",
+            "nullable" : true,
+            "items" : {
+              "$ref" : "#/components/schemas/WorkPriceItem"
+            }
+          }
+        },
+        "additionalProperties" : false
+      }
+    },
+    "securitySchemes" : {
+      "Bearer" : {
+        "type" : "apiKey",
+        "description" : "JWT Authorization header using the Bearer scheme.\r\n\r\nEnter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: 'Bearer 12345abcdef'",
+        "name" : "Authorization",
+        "in" : "header"
+      }
+    }
+  }
+}
